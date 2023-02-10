@@ -1,8 +1,4 @@
 const eqArrays = function(arrayOne, arrayTwo) {
-  if (arrayOne === undefined || arrayTwo === undefined) {
-    return false;
-  }
-  
   if (arrayOne.length !== arrayTwo.length) {
     return false;
   }
@@ -17,7 +13,7 @@ const eqArrays = function(arrayOne, arrayTwo) {
 };
 
 const assertArraysEqual = function(actual, expected) {
-  if (eqArrays(actual[0], actual[1]) === expected) {
+  if (eqArrays(actual, expected)) {
     return console.log("Assertion Passed: The arrays are equal.");
   }
   
@@ -25,4 +21,5 @@ const assertArraysEqual = function(actual, expected) {
 };
 
 
-assertArraysEqual([[1, 2, "3"], [1, 2, "3"]], true);
+assertArraysEqual([1, 2, "3"], [1, 2, "3"]);
+assertArraysEqual([1, 2, "3"], [1, 2, 3]);
