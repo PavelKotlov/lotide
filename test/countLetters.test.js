@@ -1,7 +1,7 @@
 const countLetters = require('../lib/countLetters');
 const assertEqual = require('../lib/assertEqual');
 
-describe("The function countletters", () => {
+describe("The function countLetters", () => {
   it("should return an object that lists all the letters in a string and their quantity and see if letter 'h' appears 4 times", () => {
     const actual = countLetters("lighthouse in the house")['h'];
     const expected = 4;
