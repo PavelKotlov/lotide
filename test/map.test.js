@@ -1,23 +1,20 @@
 const map = require('../lib/map');
-const assertArraysEqual = require('../lib/assertArraysEqual');
+const assert = require('chai').assert;
 
-describe("The function map", () => {
-  it("should return an array with the first letter of each word in the given array, ['ground', 'control', 'to', 'major', 'tom'] should become ['g', 'c', 't', 'm', 't']", () => {
+describe("#map", () => {
+  it("returns ['g', 'c', 't', 'm', 't'] for ['ground', 'control', 'to', 'major', 'tom']", () => {
     const words = ["ground", "control", "to", "major", "tom"];
-    const actual = map(words, word => word[0]);
-    const expected = ['g', 'c', 't', 'm', 't'];
-
-    assertArraysEqual(actual, expected);
+    assert.deepEqual(map(words, word => word[0]), ['g', 'c', 't', 'm', 't']);
   });
   
-  it("should return an array with the updated boolean value, [false, true, true] should become [false, false, false]", () => {
+  it("returns [false, false, false] for [false, true, true]", () => {
     const arrays = [false, true, true];
-    const actual = map(arrays, array => {
-      if (array === true) return false;
-      return true;
-    });
-    const expected = [false, false, false];
+    assert.deepEqual(map(arrays, array => {
+      if (array === true) {
+        return false;
+      }
 
-    assertArraysEqual(actual, expected);
+      return false;
+    }), [false, false, false])
   });
 });
