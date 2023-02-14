@@ -1,22 +1,16 @@
-const assertEqual = require("../lib/assertEqual");
 const head = require('../lib/head');
+const assert = require('chai').assert;
 
-describe("The head function ", () => {
-  it("should return true if the first element in an array strictly equals the given value in an argument", () => {
-    const actual = head(["Hello", "Lighthouse", "Labs"]);
-    const expected = "Hello";
-    assertEqual(actual, expected);
+describe("#head", () => {
+  it("returns 1 for [1, 2, 3]", () => {
+    assert.strictEqual(head([1, 2, 3]), 1);
   });
 
-  it("should return false if the first element in an array does not strictly equals the given value in an argument", () => {
-    const actual = head([1,2,3]);
-    const expected = 8;
-    assertEqual(actual, expected);
+  it("returns lighthouse for ['lighthouse', 'labs', 'inc']", () => {
+    assert.strictEqual(head(['lighthouse', 'labs', 'inc']), 'lighthouse');
   });
 
-  it("should return null if the first element in an array is undefined", () => {
-    const actual = head([undefined]);
-    const expected = null;
-    assertEqual(actual, expected);
+  it("return null for [undefined]", () => {
+    assert.strictEqual(head([undefined]), null);
   });
 });
