@@ -1,8 +1,8 @@
 const countOnly = require('../lib/countOnly');
-const assertEqual = require('../lib/assertEqual');
+const assert = require('chai').assert;
 
-describe("The function countOnly", () => {
-  it("should return the number of times a given name has been counted, if given 'Jason' return 1", () => {
+describe("#countOnly", () => {
+  it("returns 1 for countOnly(firstNames, {'Jason': true, 'Karima': true, 'Fang': true, 'Agouhanna': false})['Jason']", () => {
     const firstNames = [
       "Karl",
       "Salima",
@@ -18,10 +18,10 @@ describe("The function countOnly", () => {
     const actual = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true, "Agouhanna": false })["Jason"];
     const expected = 1;
     
-    assertEqual(actual, expected);
+    assert.strictEqual(actual, expected);
   });
 
-  it("should return undefined if a given name has not been counted, and therefore did not exist in the original object. 'Karima' return undefined", () => {
+  it("returns undefined for countOnly(firstNames, {'Jason': true, 'Karima': true, 'Fang': true, 'Agouhanna': false})['Karima']", () => {
     const firstNames = [
       "Karl",
       "Salima",
@@ -34,9 +34,9 @@ describe("The function countOnly", () => {
       "Joe"
     ];
     
-    const actual = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true, "Agouhanna": false })["Karima"];
+    const actual = countOnly(firstNames, {"Jason": true, "Karima": true, "Fang": true, "Agouhanna": false})["Karima"];
     const expected = undefined;
     
-    assertEqual(actual, expected);
+    assert.strictEqual(actual, expected);
   });
 });
