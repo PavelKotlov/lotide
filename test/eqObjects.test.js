@@ -1,25 +1,16 @@
 const eqObjects = require('../lib/eqObjects');
-const assertEqual = require('../lib/assertEqual');
+const assert = require('chai').assert;
 
-describe("The function eqObjects", () => {
-  it("should return true if two object are strictly equal", () => {
-    const actual = eqObjects({ color: "red", size: "medium" }, { size: "medium", color: "red" });
-    const expected = true;
-
-    assertEqual(actual, expected);
+describe("#eqObjects", () => {
+  it("returns true for {color: 'red', size: 'medium'} === {size: 'medium', color: 'red'}", () => {
+    assert.isTrue(eqObjects({ color: "red", size: "medium" }, { size: "medium", color: "red" }));
   });
 
-  it("should return false if two object are strictly not equal", () => {
-    const actual = eqObjects({colors: ["red", "blue"], size: "medium"}, {size: "medium", colors: ["red", "blue"], sleeveLength: "long"});
-    const expected = false;
-
-    assertEqual(actual, expected);
+  it("returns false for {color: 'red', size: 'medium'} === {size: 'medium', color: 'red', sleeveLength: 'long'}", () => {
+    assert.isFalse(eqObjects({ color: "red", size: "medium" }, {size: "medium", colors: ["red", "blue"], sleeveLength: "long"}));
   });
 
-  it("should null if either of the objects are undefined", () => {
-    const actual = eqObjects(undefined, {size: "medium", colors: ["red", "blue"], sleeveLength: "long"});
-    const expected = null;
-
-    assertEqual(actual, expected);
+  it("returns null for undefined !== {size: 'medium', color: 'red', sleeveLength: 'long'}", () => {
+    assert.isNull(eqObjects(undefined, {size: "medium", colors: ["red", "blue"], sleeveLength: "long"}));
   });
 });
