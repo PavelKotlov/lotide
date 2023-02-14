@@ -1,30 +1,24 @@
 const findKeyByValue = require('../lib/findKeyByValue');
-const assertEqual = require('../lib/assertEqual');
+const assert = require('chai').assert;
 
-describe("The function findKeyByValue", () => {
-  it("should return the value of an object key based on the value of the object parameter, 'The Wire' === 'drama'", () => {
+describe("#findKeyByValue", () => {
+  it("returns 'drama' for 'The Wire'", () => {
     const bestTVShowsByGenre = {
       sci_fi: "The Expanse",
       comedy: "Brooklyn Nine-Nine",
       drama:  "The Wire"
     };
 
-    const actual = findKeyByValue(bestTVShowsByGenre, "The Wire");
-    const expected = "drama";
-
-    assertEqual(actual, expected);
+    assert.strictEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
   });
 
-  it("should return undefined if an object key's value cannot be returned because  the object parameter doesn't exist, 'That '70s Show' === undefined", () => {
+  it("returns undefined for 'That '70s Show'", () => {
     const bestTVShowsByGenre = {
       sci_fi: "The Expanse",
       comedy: "Brooklyn Nine-Nine",
       drama:  "The Wire"
     };
-
-    const actual = findKeyByValue(bestTVShowsByGenre, "That '70s Show");
-    const expected = undefined;
-
-    assertEqual(actual, expected);
+    
+    assert.strictEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);
   });
 });
