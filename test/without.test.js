@@ -1,19 +1,12 @@
 const without = require('../lib/without');
-const eqArrays = require('../lib/eqArrays');
-const assertArraysEqual = require('../lib/assertArraysEqual');
+const assert = require('chai').assert;
 
-describe("The function without", () => {
-  it("should return an array without a given element", () => {
-    const actual = eqArrays(without([1, 2, "3"], ["3"]), [1, 2]);
-    const expected = true;
-    
-    assertArraysEqual(actual, expected);
+describe("#without", () => {
+  it("returns [1, 2] for [1, 2, '3'] without ['3']", () => {
+    assert.deepEqual(without([1, 2, "3"], ["3"]), [1, 2]);
   });
 
-  it("should return an array without any changes if not given an element", () => {
-    const actual = eqArrays(without([1, 2, "3"], []), [1, 2, "3"]);
-    const expected = true;
-    
-    assertArraysEqual(actual, expected);
+  it("returns [1, 2, '3'] for 1, 2, '3'] without []", () => {
+    assert.deepEqual(without([1, 2, "3"], []), [1, 2, "3"]);
   });
 });

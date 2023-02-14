@@ -1,20 +1,14 @@
 const takeUntil = require('../lib/takeUntil');
-const assertArraysEqual = require('../lib/assertArraysEqual');
+const assert = require('chai').assert;
 
-describe("The function takeUntil", () => {
-  it("should return all values in an array up to the given value", () => {
+describe("#takeUntil", () => {
+  it("returns [1, 2, 5, 7, 2] for [1, 2, 5, 7, 2, -1, 2, 4, 5]", () => {
     const dataSetOne = [1, 2, 5, 7, 2, -1, 2, 4, 5];
-    const actual = takeUntil(dataSetOne, x => x < 0);
-    const expected = [1, 2, 5, 7, 2];
-
-    assertArraysEqual(actual, expected)
+    assert.deepEqual(takeUntil(dataSetOne, x => x < 0), [1, 2, 5, 7, 2]);
   });
 
-  it("should return 'Assertion Failed: The arrays are not equal' since the returned array does not equal the expected array", () => {
+  it("returns ['I've', 'been', 'to', 'Hollywood'] for ['I've', 'been', 'to', 'Hollywood', ',', 'I've', 'been', 'to', 'Redwood']", () => {
     const dataSetTwo = ["I've", "been", "to", "Hollywood", ",", "I've", "been", "to", "Redwood"];
-    const actual = takeUntil(dataSetTwo, x => x === ",");
-    const expected = ["I've", "been", "to", "Bollywood"];
-
-    assertArraysEqual(actual, expected);
+    assert.deepEqual(takeUntil(dataSetTwo, x => x === ","), ["I've", "been", "to", "Hollywood"]);
   });
 });
