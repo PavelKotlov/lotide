@@ -1,26 +1,16 @@
 const assertArraysEqual = require('../lib/assertArraysEqual');
 const assert = require('chai').assert;
 
-describe("The assertArraysEqual function ", () => {
-  it("should return 'Assertion Passed: The arrays are equal' if two arrays are strictly equal", () => {
-    const actual = [1, 2, "3"];
-    const expected = [1, 2, "3"];
-
-    assert.deepEqual(actual, expected);
+describe("#assertArraysEqual", () => {
+  it("returns true for [1, 2, '3'] === [1, 2, '3']", () => {
+    assert.isTrue(assertArraysEqual([1, 2, "3"], [1, 2, "3"]));
   });
 
-  it("should return 'Assertion Failed: The arrays are not equal' if two arrays are strictly not equal", () => {
-    const actual = [1, 2, "3"];
-    const expected = [1, 2, 3];
-    
-    assert.deepEqual(actual, expected);
+  it("returns false for [1, 2, '3'] !== [1, 2, 3]", () => {
+    assert.isFalse(assertArraysEqual([1, 2, "3"], [1, 2, 3]));
   });
   
-  it("should return null 'Assertion Failed: One of the arrays is undefined' if one of the arrays is undefined", () => {
-    const actual = undefined;
-    const expected = [1, 2, 3];
-    
-    assert.deepEqual(actual, expected);
+  it("returns null for undefined !== [1, 2, 3]", () => {
+    assert.isNull(assertArraysEqual(undefined, [1, 2, 3]));
   });
-
 });
