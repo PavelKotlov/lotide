@@ -1,26 +1,19 @@
 const assertEquals = require('../lib/assertEqual');
+const assert = require('chai').assert;
 
-describe("The function assertEquals ", () => {
-  it("should return a string with 'Assertion Passed: value1 === value2' if two values are strictly equal", () => {
-    const actual = "Lighthouse Labs";
-    const expected = "Lighthouse Labs";
-
-    assertEquals(actual, expected);
+describe("#assertEquals", () => {
+  it("returns true for 'Lighthouse Labs' === 'Lighthouse Labs'", () => {
+    assert.isTrue(assertEquals('Lighthouse Labs', 'Lighthouse Labs'));
   });
 
-  it("should return a string with 'Assertion Failed: value1 === value2' if two values are strictly not equal", () => {
-    const actual = "Lighthouse Labs";
+  it("returns false for 'KFC' !== 'Burger King'", () => {
+    const actual = "KFC";
     const expected = "Burger King";
 
-    assertEquals(actual, expected);
+    assert.isFalse(assertEquals('KFC', 'Burger King'));
   });
 
-  it("should return a string with `Assertion Failed: One of the values is undefined' if one of the values is undefined", () => {
-    const actual = undefined;
-    const expected = null;
-
-    assertEquals(actual, expected);
+  it("returns null for undefined !== 'Robert'", () => {
+    assert.isNull(assertEquals(undefined, 'Robert'));
   });
-
-  
 });
