@@ -1,17 +1,17 @@
 const assertObjectsEqual = require('../lib/assertObjectsEqual');
+const assert = require('chai').assert;
 
-describe("The function assertObjectsEqual", () => {
-  it("should return 'Assertion Passed: object1 === object2' if two objects are strictly equal", () => {
+describe("#assertObjectsEqual", () => {
+  it("returns true for {colors: ['red', 'blue'], size: 'medium'} === {size: 'medium', colors: ['red', 'blue']}", () => {
     const actual = {colors: ["red", "blue"], size: "medium" };
     const expected = {size: "medium", colors: ["red", "blue"]};
-
-    assertObjectsEqual(actual, expected);
+    assert.isTrue(assertObjectsEqual(actual, expected));
   });
 
-  it("should return 'Assertion Failed: object1 !== object2' if two objects are strictly not equal", () => {
+  it("returns false for {colors: ['red', 'blue'], size: 'medium'} === {size: 'medium', colors: ['red', 'blue'], sleeveLength: 'long'}", () => {
     const actual = {colors: ["red", "blue"], size: "medium" };
     const expected = {size: "medium", colors: ["red", "blue"], sleeveLength: "long"};
 
-    assertObjectsEqual(actual, expected);
+    assert.isFalse(assertObjectsEqual(actual, expected));
   });
 });
