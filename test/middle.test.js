@@ -32,10 +32,3 @@ describe("The function middle", () => {
   });
 
 });
-
-
-// assertArraysEqual(eqArrays(middle([1, 2]), []));
-// assertArraysEqual(eqArrays(middle([1, 2, 3]), [2]));
-// assertArraysEqual(eqArrays(middle([1, 2, 3, 4]), [2, 3]));
-// assertArraysEqual(eqArrays(middle([1, 2, 3, 4, 5, 6, 7, 8]), [4, 5]));
-// assertArraysEqual(eqArrays(middle([1, 2, 3, 4, 5, 6, 7, 8, 9]), [5]));
