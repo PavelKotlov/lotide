@@ -1,25 +1,16 @@
 const eqArrays = require('../lib/eqArrays');
-const assertEqual = require('../lib/assertEqual');
+const assert = require('chai').assert;
 
-describe("The function eqArrays ", () => {
-  it("should return true if two given arrays are strictly equal", () => {
-    const actual = eqArrays([1, 2, 3], [1, 2, 3]);
-    const expected = true;
-
-    assertEqual(actual, expected);
+describe("#eqArrays", () => {
+  it("retruns true for arrayOne[1, 2, 3] === arrayTwo[1, 2, 3]", () => {
+    assert.strictEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
   });
 
-  it("should return false if two given arrays are strictly not equal", () => {
-    const actual = eqArrays(["1", "2", "3"], ["1", "2", 3]);
-    const expected = false;
-
-    assertEqual(actual, expected);
+  it("returns false for arrayOne['1', '2', '3'] !== arrayTwo['1', '2', 3]", () => {
+    assert.strictEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false);
   });
 
-  it("should return null if a given array is undefined", () => {
-    const actual = eqArrays(undefined, ["1", "2", 3]);
-    const expected = null;
-
-    assertEqual(actual, expected);
+  it("returns null for undefined !== arrayTwo['1', '2', 3]", () => {
+    assert.strictEqual(eqArrays(undefined, ["1", "2", 3]), null);
   });
 });
